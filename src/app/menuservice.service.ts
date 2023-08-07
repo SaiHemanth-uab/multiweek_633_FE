@@ -14,6 +14,6 @@ export class MenuService {
     return this.http.post(`${environment.baseURL}/send/subscriptions`, payload);
   }
   onCheckUpdateClick(payload: any) {
-    return this.http.post(`${environment.baseURL}/countCliks`, payload);
+    return this.http.post(`${environment.baseURL}/countClicks`, payload);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../menuservice.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-download',
@@ -13,7 +14,7 @@ export class DownloadComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     public router: Router
   ) {}
-
+  Message = 'Please Wait We are fetching on it';
   ngOnInit() {
     let url = this.router.url.split('download')[1].split('_path_');
 
@@ -26,7 +27,10 @@ export class DownloadComponent implements OnInit {
     this.menuService.onCheckUpdateClick(payload).subscribe({
       next: (response: any) => {
         if (response.data == true) {
+          this.Message = 'Congratulations The file is downloaded';
           this.downloadFile(payload.url);
+        } else {
+          this.Message = 'file is no longer Available !!';
         }
       },
       error: (error: any) => {
