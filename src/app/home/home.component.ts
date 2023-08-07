@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
         this.menuService.onSendSubscriptions(emails).subscribe({
           next: (res: any) => {
             console.log(res);
+            alert('Sent Subscription requests!');
           },
           error: (error: any) => {
             console.log(error);
@@ -42,6 +43,7 @@ export class HomeComponent implements OnInit {
       this.menuService.onSendSubscriptions([this.emailsList]).subscribe({
         next: (res: any) => {
           console.log(res);
+          alert('Sent Subscription requests!');
         },
         error: (error: any) => {
           console.log(error);
@@ -56,6 +58,7 @@ export class HomeComponent implements OnInit {
       formData.append('file', this.selectedFile);
       this.menuService.onSendFileToBucket(formData).subscribe({
         next: (result: any) => {
+          alert('File uploaded successfully');
           console.log(result);
         },
         error: (error: any) => {
